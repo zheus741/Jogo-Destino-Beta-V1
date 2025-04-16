@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classe 2020 – Escolha Seu Destino</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Tela inicial */
+    .start-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(120deg, #1e1e2f, #3a3a5f);
+      color: #fff;
+      text-align: center;
+    }
+
+    .start-screen h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .start-screen button {
+      background: linear-gradient(45deg, #ffcc00, #ffaa00);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+    }
+
+    .start-screen button:hover {
+      background: #fff0aa;
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <!-- Botão inicial -->
+  <div id="startScreen" class="start-screen">
+    <h1>Classe 2020 – Escolha Seu Destino</h1>
+    <button onclick="iniciarJornada()">Iniciar Jornada</button>
+  </div>
+
+  <!-- Haruki -->
+  <section class="scene" id="sceneHaruki" style="display:none;">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="videos/haruki.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+      <p class="typing" id="typingHaruki"></p>
+      <div class="choices" id="choicesHaruki">
+        <button onclick="escolher('altruismo','sceneAllura')">Voltei pelo povo</button>
+        <button onclick="escolher('ambicao','sceneAllura')">Sem mim, não há vitória</button>
+        <button onclick="escolher('equilibrio','sceneAllura')">Senti que precisava</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Allura -->
+  <section class="scene" id="sceneAllura" style="display:none;">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="videos/allura.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+      <p class="typing" id="typingAllura"></p>
+      <div class="choices" id="choicesAllura">
+        <button onclick="escolher('razao','sceneForjador')">Com lógica. Sempre.</button>
+        <button onclick="escolher('emocao','sceneForjador')">Sigo meu instinto.</button>
+        <button onclick="escolher('adaptabilidade','sceneForjador')">Depende do risco.</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Forjador -->
+  <section class="scene" id="sceneForjador" style="display:none;">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="videos/forjador.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+      <p class="typing" id="typingForjador"></p>
+      <div class="choices" id="choicesForjador">
+        <button onclick="escolher('coragem','sceneFinal')">Caio com ela nos braços.</button>
+        <button onclick="escolher('pragmatismo','sceneFinal')">Carrego até ser útil.</button>
+        <button onclick="escolher('companheirismo','sceneFinal')">Prefiro dividir o peso.</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final -->
+  <section class="scene" id="sceneFinal" style="display:none;">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="videos/final.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+      <h2>Seu Destino</h2>
+      <p id="finalResultado" class="typing"></p>
+      <button onclick="location.reload()">Recomeçar</button>
+    </div>
+  </section>
+
+  <!-- Audio ambiente -->
+  <audio id="audioAmbiente" autoplay loop>
+    <source src="audios/ambiente.mp3" type="audio/mp3">
+  </audio>
+  <button id="toggleAudio">🔊</button>
+
+  <script>
+    function iniciarJornada() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('sceneHaruki').style.display = 'block';
+    }
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
